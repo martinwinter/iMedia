@@ -306,17 +306,17 @@
 					flickrParser.flickrAPIKey = [[[NSString alloc] initWithBytes:attributes[0].data length:attributes[0].length encoding:NSUTF8StringEncoding] autorelease];
 					SecKeychainItemFreeContent (&list, NULL);
 				}
-				else NSLog(@"%s unable to fetch 'flickr_api' account from keychain: status %d", __FUNCTION__, err);
+				else NSLog(@"%s unable to fetch 'flickr_api' account from keychain: status %ld", __FUNCTION__, (long)err);
 			}
 			else
 			{
-				NSLog(@"%s Empty password for 'flickr_api' account in keychain: status %d", __FUNCTION__, err);
+				NSLog(@"%s Empty password for 'flickr_api' account in keychain: status %ld", __FUNCTION__, (long)err);
 			}
 			SecKeychainItemFreeContent(NULL, buffer);
 		}
 		else
 		{
-			NSLog(@"%s Couldn't find 'flickr_api' account in keychain: status %d", __FUNCTION__, err);
+			NSLog(@"%s Couldn't find 'flickr_api' account in keychain: status %ld", __FUNCTION__, (long)err);
 		}
 	}		// end IMBFlickrParser code
     
@@ -633,7 +633,7 @@
 	if ([self count] > 20)
 	{
 		NSArray *subArray = [self subarrayWithRange:NSMakeRange(0,20)];
-		return [NSString stringWithFormat:@"%@ [... %d items]", [subArray description], [self count]];
+		return [NSString stringWithFormat:@"%@ [... %ld items]", [subArray description], (long)[self count]];
 	}
 	else
 	{
